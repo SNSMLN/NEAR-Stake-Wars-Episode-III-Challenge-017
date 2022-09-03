@@ -25,7 +25,8 @@
 
 2
 Создаем новый аккаунт 
-
+Сохраняем в безопасном месте сид фразу. Может понадобится для восстановления контроля над аккаунтом
+Сохраняем адрес кошелька. На него надо будет положить минимум 6 AKT.
 ![near ch17 7 add account 11](https://user-images.githubusercontent.com/76874974/188269853-c8546ee9-af6a-4f8d-a66b-afe72f94af46.png)
 ![near ch17 7 add account 12](https://user-images.githubusercontent.com/76874974/188269873-88dad738-e660-45ff-9eda-17c696b90a00.png)
 ![near ch17 7 add account 13](https://user-images.githubusercontent.com/76874974/188269877-eccbb1f4-2eff-4f01-8d74-19349b4067eb.png)
@@ -33,6 +34,32 @@
 ![near ch17 7 add account 15](https://user-images.githubusercontent.com/76874974/188269896-bf2e4971-521c-4fc1-b1e5-51fb31c1c170.png)
 ![near ch17 7 add account 16](https://user-images.githubusercontent.com/76874974/188269910-4f64bcb6-fe5d-4fc0-825b-2889d458f398.png)
 ![near ch17 7 add account 17](https://user-images.githubusercontent.com/76874974/188269923-6e769f5e-74a9-41ec-80a4-f55ca0b98443.png)
+
+Пополняем баланс кошелька на 6 ACT. Без этого дальшейшие шаги не выполнить.
+
+
+3- создание сертификата
+В правом углу кнопка, нажимаем ее, создаем сертификат, 
+
+
+![near ch17 8 create cert 1](https://user-images.githubusercontent.com/76874974/188270076-394c0e14-a8c7-4f0e-a6e0-0d633f5410c2.png)
+
+![near ch17 8 create cert 2](https://user-images.githubusercontent.com/76874974/188270080-532521d4-dec7-4151-a627-0e42d3908584.png)
+
+
+![near ch17 8 create cert 3](https://user-images.githubusercontent.com/76874974/188270094-af1f3f16-53eb-47a0-b4b8-4918d70e7555.png)
+
+подписываем транзакацию
+
+![near ch17 8 create cert 4](https://user-images.githubusercontent.com/76874974/188270105-0d89c6f3-f7fe-4a22-be00-9b64a6109506.png)
+
+![near ch17 8 create cert 5](https://user-images.githubusercontent.com/76874974/188270106-e1661f32-b158-4e7e-bb42-6091d4adba97.png)
+
+Сохраняем ключ сертификата . Может пригодится для восстановления 
+
+![near ch17 8 create cert 6](https://user-images.githubusercontent.com/76874974/188270107-47608004-0d60-44fe-9b3a-ee5e7af09c4d.png)
+
+![near ch17 8 create cert 7](https://user-images.githubusercontent.com/76874974/188270109-2001052a-9d4a-4380-a9dd-4b0b8fac0112.png)
 
 
 
