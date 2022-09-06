@@ -1,5 +1,14 @@
 # NEAR-Stake-Wars-Episode-III-Challenge-017
-Although the task says that: 1 is a task for testnet, and I did in shardnet. 2 - need video tutorial. I'll try to describe it in text in my native language and put screenshots. Suddenly it will come))) . In general, I succeeded. There were not enough AKT tokens to gain a normal uptime. I only got 25%. But the neard is worked, and successfully signed the chunks.
+Although the task says that: 1 is a task for testnet, and I did in shardnet. 2 - need video tutorial. I'll try to describe it in text in my native language and put screenshots. Suddenly it will come))) . **In general, I succeeded**. There were not enough AKT tokens to gain a normal uptime. I only got 25%. But the neard is worked, and successfully signed the chunks.
+
+Akash account ID akash1l2et3k582xs4w7f98lshwv77ppju5juwqaxy46. Im dont find this field in submission form.
+
+//
+
+// lets go!
+
+//
+
 
 Хотя в задании написано, что:
 
@@ -157,29 +166,49 @@ sed6hu0h2te3j3bg73ccn5uces.ingress.europlots.com
 
 Далее используем скрипты установки по порядку. Не забываем указать свой пул в set-vars.sh
 
-`000-challenge-1
-020--apt--update.sh
+`020--apt--update.sh
+
 030-install-node-js.sh
+
 035-cmd-update-npm.sh
+
 040-install-near-cli.sh
+
 045-cmd-update-npm-fix.sh
+
 050-set-vars.sh
+
 060-ufw-open-ports.sh
-100-challenge-2
+
+
 110-check-cpu-support.sh
+
 120-install-depends.sh
+
 130-install-python-pip.sh
+
 140-install-rust.sh
+
 150-get-from-git.sh
+
 160-make.sh
+
 170-copy-bin.sh
+
 180-init.sh
+
 182-get-config.sh
+
 186-test-run-node.sh
+
 192-create-validator-reserved-json.sh
+
 194-chande-priv-key-to-secret-key.sh
+
 195-backup-keys.sh
+
 196-make-service-file.sh
+
 197-en-start-service.sh`
 
                                                                                                                   
