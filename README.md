@@ -129,8 +129,8 @@
 ![near ch17 9 create deployment 10](https://user-images.githubusercontent.com/76874974/188696142-35eb8229-64f8-44de-96fb-007560e13372.png)
 ![near ch17 9 create deployment 11](https://user-images.githubusercontent.com/76874974/188696147-5796298b-174c-4e73-87f4-86448bb26b98.png)
 ![near ch17 9 create deployment 12](https://user-images.githubusercontent.com/76874974/188696154-7d0fdc78-736b-4e05-bd5c-d8a5be08c953.png)
-![near ch17 9 create deployment 13](https://user-images.githubusercontent.com/76874974/188696159-50ad0cb6-67e1-4831-834e-b770ab44167a.png)
-![near ch17 9 create deployment 14](https://user-images.githubusercontent.com/76874974/188696168-36a8c2c5-6b0b-401d-ab1c-c3fc2bafa6d9.png)
+
+
 
       
 ![near ch17 10 choose provider](https://user-images.githubusercontent.com/76874974/188701192-9efd1b89-b7ff-47c4-a66a-39803d3c5541.png)
@@ -138,6 +138,52 @@
 ![near ch17 10 choose provider detail ext 1](https://user-images.githubusercontent.com/76874974/188701206-6d3693ac-e3e4-4b17-9558-3ddcff9649cc.png)
 ![near ch17 10 choose provider detail ext 2](https://user-images.githubusercontent.com/76874974/188701207-5ac54835-660c-4bfe-88d8-50377c6ac69a.png)
 
-      
+
+
+**5 установка ноды near на сервер**
+
+С вкладки информации о деплое берем uri сервера, и порт, на котором извне находится ssh  У меня это uri
+sed6hu0h2te3j3bg73ccn5uces.ingress.europlots.com
+30633:22 .У вас будут другие
+
+![near ch17 9 create deployment 14](https://user-images.githubusercontent.com/76874974/188696168-36a8c2c5-6b0b-401d-ab1c-c3fc2bafa6d9.png)
+
+Подключаемся к серверу своим ssh клиентом. У меня Remmina.
+
+![near ch17 9 create deployment 13](https://user-images.githubusercontent.com/76874974/188696159-50ad0cb6-67e1-4831-834e-b770ab44167a.png)
+
+
+Далее используем скрипты установки по порядку. Не забываем указать свой пул в set-vars.sh
+
+`000-challenge-1
+020--apt--update.sh
+030-install-node-js.sh
+035-cmd-update-npm.sh
+040-install-near-cli.sh
+045-cmd-update-npm-fix.sh
+050-set-vars.sh
+060-ufw-open-ports.sh
+100-challenge-2
+110-check-cpu-support.sh
+120-install-depends.sh
+130-install-python-pip.sh
+140-install-rust.sh
+150-get-from-git.sh
+160-make.sh
+170-copy-bin.sh
+180-init.sh
+182-get-config.sh
+186-test-run-node.sh
+192-create-validator-reserved-json.sh
+194-chande-priv-key-to-secret-key.sh
+195-backup-keys.sh
+196-make-service-file.sh
+197-en-start-service.sh`
+
+                                                                                                                  
+
+
+Все, нода установлена . Смотрим логи see-logs.sh
+
 
 
