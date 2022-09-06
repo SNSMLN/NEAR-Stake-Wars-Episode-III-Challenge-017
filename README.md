@@ -1,6 +1,15 @@
 # NEAR-Stake-Wars-Episode-III-Challenge-017
 
-Хотя в задании написано, что нужен видео туториал, я все же попробую описать текстом и скриншотами. Вдруг подойдет )
+Хотя в задании написано, что:
+
+1- задание для testnet, а я делал в shardnet. 
+
+2 - нужен видео туториал. 
+
+Я все же попробую описать текстом и скриншотами. Вдруг подойдет )
+
+***Дизмейкер - в общем то у меня все получилось. Не хватило токенов AKT, чтобы набрать нормальный аптайм. Но нода заработала, и успешно подписывала чанки.***
+
 
 В качестве основы взят туториал https://github.com/Dimokus88/near/blob/main/Guide_RU.md . Внесены незначительные измения в конфиг деплоя и загрузочный скрипт.
 
@@ -82,5 +91,122 @@
 
 **4 развертывание сервера**
 
-Используем шаблон деплоя 
+Используем шаблон деплоя . Не забываем указать свой пароль root.
+
+`---
+version: "2.0"
+
+services:
+  app:
+    image: dimokus88/ubuntu:1.1
+    env:
+     - "my_root_password=<ЗДЕСЬ УКАЗЫВАЕМ ПАРОЛЬ>" 
+     #- "link_key="
+    command:
+      - "bash"
+      - "-c"
+    args:
+      - 'curl -s https://raw.githubusercontent.com/SNSMLN/NEAR-Stake-Wars-Episode-III-Challenge-017/main/start.sh | bash '
+    expose:
+      - port: 80
+        as: 80
+        to:
+          - global: true
+      - port: 22
+        as: 22
+        to:
+          - global: true
+      - port: 3030
+        as: 3030
+        to:
+          - global: true
+      - port: 24567
+        as: 24567
+        to:
+          - global: true
+profiles:
+  compute:
+    app:
+      resources:
+        cpu:
+          units: 4.0
+        memory:
+          size: 16Gi
+        storage:
+          size: 160Gi
+        
+        
+  placement:
+    akash: 
+      attributes:
+      pricing:
+        app:
+          denom: uakt
+          amount: 10000
+deployment:
+  app:
+    akash:
+      profile: app
+      count: 1 `
+      
+
+Используем следующий скрипт развертывания приложения:
+`#!/bin/bash
+
+## !!!TEST STARTUP ONELINER SCRIPT!!!
+## !!!FOR AKASH!!!
+
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+(echo ${my_root_password}; echo ${my_root_password}) | passwd root
+##
+service ssh restart
+##
+runsvdir -P /etc/service &
+##
+nodepid=0
+##
+apt update && apt upgrade -y
+apt install sudo nano mc -y
+##
+t=1
+while [[ "$t" -eq 1 ]]
+do
+tail -200 /var/log/neard/neard.log
+date
+sleep 5m
+done`
+
+Нажимаем справа вверху create deployment
+
+Выбираем empty пустой шаблон для развертывания  , next
+
+Выбираем имя для деплоя, и  вставляем свой шаблон для развертывания  , next
+ 
+Для создания деплоя нужно сделать депозит , минимум 5 AKT . Вводим размер депозита, next
+
+Выбираем минимальную комиссию low, подписываем транзакцию approve
+
+Все, деплой создан. 
+
+Можно посмотреть логи создания деплоя, статус деплоя, зайти в консоль прямо из приложения
+
+![near ch17 9 create deployment 1](https://user-images.githubusercontent.com/76874974/188696074-8c69b0de-f235-4c53-bab9-dcc942873c0d.png)
+![near ch17 9 create deployment 2](https://user-images.githubusercontent.com/76874974/188696097-fc4ac83a-84a0-49b4-8854-01130eb73698.png)
+![near ch17 9 create deployment 3](https://user-images.githubusercontent.com/76874974/188696103-d6f2a006-1e08-4b20-b548-6c0094b09ac7.png)
+![near ch17 9 create deployment 4](https://user-images.githubusercontent.com/76874974/188696108-d0ccc8dc-a015-45ad-b8ce-ca3f2d580ea0.png)
+![near ch17 9 create deployment 5](https://user-images.githubusercontent.com/76874974/188696113-21ccd304-74a8-4591-927e-3285eef47114.png)
+![near ch17 9 create deployment 6](https://user-images.githubusercontent.com/76874974/188696117-0d36e456-7784-4aa2-8dae-de06176a2462.png)
+![near ch17 9 create deployment 7](https://user-images.githubusercontent.com/76874974/188696119-e536637f-3bb2-4dcb-bf6d-48b25c960103.png)
+![near ch17 9 create deployment 8](https://user-images.githubusercontent.com/76874974/188696126-c1f8e561-b796-4506-ba74-578a033b8cb9.png)
+![near ch17 9 create deployment 9](https://user-images.githubusercontent.com/76874974/188696132-0487344b-0ef3-4d69-b0ed-f0189b98c3bf.png)
+![near ch17 9 create deployment 10](https://user-images.githubusercontent.com/76874974/188696142-35eb8229-64f8-44de-96fb-007560e13372.png)
+![near ch17 9 create deployment 11](https://user-images.githubusercontent.com/76874974/188696147-5796298b-174c-4e73-87f4-86448bb26b98.png)
+![near ch17 9 create deployment 12](https://user-images.githubusercontent.com/76874974/188696154-7d0fdc78-736b-4e05-bd5c-d8a5be08c953.png)
+![near ch17 9 create deployment 13](https://user-images.githubusercontent.com/76874974/188696159-50ad0cb6-67e1-4831-834e-b770ab44167a.png)
+![near ch17 9 create deployment 14](https://user-images.githubusercontent.com/76874974/188696168-36a8c2c5-6b0b-401d-ab1c-c3fc2bafa6d9.png)
+
+      
+      
+      
+
 
