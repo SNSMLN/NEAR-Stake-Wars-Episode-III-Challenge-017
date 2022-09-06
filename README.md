@@ -93,90 +93,15 @@
 
 Используем шаблон деплоя . Не забываем указать свой пароль root.
 
-`---
-version: "2.0"
-
-services:
-  app:
-    image: dimokus88/ubuntu:1.1
-    env:
-     - "my_root_password=<ЗДЕСЬ УКАЗЫВАЕМ ПАРОЛЬ>" 
-     #- "link_key="
-    command:
-      - "bash"
-      - "-c"
-    args:
-      - 'curl -s https://raw.githubusercontent.com/SNSMLN/NEAR-Stake-Wars-Episode-III-Challenge-017/main/start.sh | bash '
-    expose:
-      - port: 80
-        as: 80
-        to:
-          - global: true
-      - port: 22
-        as: 22
-        to:
-          - global: true
-      - port: 3030
-        as: 3030
-        to:
-          - global: true
-      - port: 24567
-        as: 24567
-        to:
-          - global: true
-profiles:
-  compute:
-    app:
-      resources:
-        cpu:
-          units: 4.0
-        memory:
-          size: 16Gi
-        storage:
-          size: 160Gi
-        
-        
-  placement:
-    akash: 
-      attributes:
-      pricing:
-        app:
-          denom: uakt
-          amount: 10000
-deployment:
-  app:
-    akash:
-      profile: app
-      count: 1 `
+`https://github.com/SNSMLN/NEAR-Stake-Wars-Episode-III-Challenge-017/blob/main/near-snsmln.deploy `
       
 
-Используем следующий скрипт развертывания приложения:
-`#!/bin/bash
+В шаблоне деплоя используется следующий скрипт развертывания приложения:
+`https://raw.githubusercontent.com/SNSMLN/NEAR-Stake-Wars-Episode-III-Challenge-017/main/start.sh`
 
-## !!!TEST STARTUP ONELINER SCRIPT!!!
-## !!!FOR AKASH!!!
-
-echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-(echo ${my_root_password}; echo ${my_root_password}) | passwd root
-##
-service ssh restart
-##
-runsvdir -P /etc/service &
-##
-nodepid=0
-##
-apt update && apt upgrade -y
-apt install sudo nano mc -y
-##
-t=1
-while [[ "$t" -eq 1 ]]
-do
-tail -200 /var/log/neard/neard.log
-date
-sleep 5m
-done`
-
+Итак, начали.
 Нажимаем справа вверху create deployment
+
 
 Выбираем empty пустой шаблон для развертывания  , next
 
@@ -185,6 +110,8 @@ done`
 Для создания деплоя нужно сделать депозит , минимум 5 AKT . Вводим размер депозита, next
 
 Выбираем минимальную комиссию low, подписываем транзакцию approve
+
+Теперь выбираем из списка доступных провайдеров тот, который нам подходит по цене, расположению, скорости интернета. Время выбора ограничено - 5 минут. Нажимаем accept bud
 
 Все, деплой создан. 
 
@@ -206,7 +133,11 @@ done`
 ![near ch17 9 create deployment 14](https://user-images.githubusercontent.com/76874974/188696168-36a8c2c5-6b0b-401d-ab1c-c3fc2bafa6d9.png)
 
       
-      
+![near ch17 10 choose provider](https://user-images.githubusercontent.com/76874974/188701192-9efd1b89-b7ff-47c4-a66a-39803d3c5541.png)
+![near ch17 10 choose provider detail](https://user-images.githubusercontent.com/76874974/188701197-a8ae59e7-6ea3-4869-b6ee-42d81820d303.png)
+![near ch17 10 choose provider detail ext 1](https://user-images.githubusercontent.com/76874974/188701206-6d3693ac-e3e4-4b17-9558-3ddcff9649cc.png)
+![near ch17 10 choose provider detail ext 2](https://user-images.githubusercontent.com/76874974/188701207-5ac54835-660c-4bfe-88d8-50377c6ac69a.png)
+
       
 
 
