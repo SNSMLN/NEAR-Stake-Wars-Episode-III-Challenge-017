@@ -1,4 +1,5 @@
 # NEAR-Stake-Wars-Episode-III-Challenge-017
+Although the task says that: 1 is a task for testnet, and I did in shardnet. 2 - need video tutorial. I'll try to describe it in text in my native language and put screenshots. Suddenly it will come))) . In general, I succeeded. There were not enough AKT tokens to gain a normal uptime. I only got 25%. But the neard is worked, and successfully signed the chunks.
 
 Хотя в задании написано, что:
 
@@ -8,7 +9,8 @@
 
 Я все же попробую описать текстом и скриншотами. Вдруг подойдет )
 
-***Дизмейкер - в общем то у меня все получилось. Не хватило токенов AKT, чтобы набрать нормальный аптайм. Но нода заработала, и успешно подписывала чанки.***
+***Дизмейкер - в общем то у меня все получилось. Не хватило токенов AKT, чтобы набрать нормальный аптайм. У меня вышло только 25%. Но нода заработала, и успешно подписывала чанки.***
+![near ch17 17 val-primary key status 9](https://user-images.githubusercontent.com/76874974/188724658-dcefb46b-87d2-4adb-95f2-f42dc32a0cfe.png)
 
 
 В качестве основы взят туториал https://github.com/Dimokus88/near/blob/main/Guide_RU.md . Внесены незначительные измения в конфиг деплоя и загрузочный скрипт.
@@ -184,6 +186,81 @@ sed6hu0h2te3j3bg73ccn5uces.ingress.europlots.com
 
 
 Все, нода установлена . Смотрим логи see-logs.sh
+
+
+**6 ожидание полной синхронизации**
+После запуска ноды просто ждем, пока нода не синх полностью с сетью. Ожидание от 3 часов до суток. Зависит от интернета, диска, количества и качества пиров....
+
+![near ch17 12 rpc 1](https://user-images.githubusercontent.com/76874974/188722166-75688bcb-15e0-46af-b74f-121784e24078.png)
+![near ch17 12 rpc 2](https://user-images.githubusercontent.com/76874974/188722174-0eb59d14-23c3-4cb3-86a0-890d3e2ea52b.png)
+![near ch17 12 rpc 3](https://user-images.githubusercontent.com/76874974/188722178-e8bef0f3-344e-459e-a457-627e25eefafa.png)
+![near ch17 12 rpc 4](https://user-images.githubusercontent.com/76874974/188722181-cf8bc373-4dcd-47c4-8ae5-1a9d65834ac9.png)
+
+
+В логах должно появиться сообщение вида 
+
+100 validators , 15 peers
+
+![near ch17 13 full sync 1](https://user-images.githubusercontent.com/76874974/188722310-deeef8a4-8448-4cf6-ad5d-567f8c324397.png)
+![near ch17 13 full sync 2](https://user-images.githubusercontent.com/76874974/188722321-5c5c990e-0f2c-440a-a516-f3b82676e6b4.png)
+![near ch17 13 full sync 3](https://user-images.githubusercontent.com/76874974/188722324-cac2693d-d086-4417-aef9-dd4b10dd4dd1.png)
+![near ch17 13 full sync 4](https://user-images.githubusercontent.com/76874974/188722329-2cca862e-4b4b-4859-9eba-b3d08a5a1f78.png)
+![near ch17 13 full sync 5](https://user-images.githubusercontent.com/76874974/188722333-9cf01533-6b36-4a57-892f-f71bd96aeb50.png)
+
+
+
+Только когда дождемся  этого (полной синхронизации) , можно переходить к следующему этапу
+
+
+
+
+**7 импорт ключей основной ноды, перезапуск**
+
+Действуем, как в челлендже про резервную ноду. Останавливаем основную ноду. Останавливаем резервную (akash) . Копируем validator.json от основной ноды в папку data резервной. Запускаем резервную (akash) . 
+
+!!! Важно!!! - нельзя чтобы в сети были две ноды с одним ключом. Заслэшат ноду, и будет сложно потом выбираться из тюрьмы.
+
+
+![near ch17 14 val-primary key 0](https://user-images.githubusercontent.com/76874974/188722955-e3874b06-628e-45fb-85fb-3e6ca6a0bb88.png)
+![near ch17 14 val-primary key 1](https://user-images.githubusercontent.com/76874974/188722962-690d9332-82da-456c-8ea9-9730284015ef.png)
+![near ch17 14 val-primary key 2](https://user-images.githubusercontent.com/76874974/188722966-f1d9eaeb-4f00-4d70-842a-3542571209e9.png)
+![near ch17 14 val-primary key 3](https://user-images.githubusercontent.com/76874974/188722970-870732f1-6996-4693-a9b7-adf87001139b.png)
+![near ch17 14 val-primary key 4](https://user-images.githubusercontent.com/76874974/188722972-1096e840-a1a0-4bbe-b932-8c5a4d2bd2fd.png)
+![near ch17 14 val-primary key 5](https://user-images.githubusercontent.com/76874974/188722978-16c06c8f-0810-44f0-8030-6cb0600dca72.png)
+![near ch17 14 val-primary key 6](https://user-images.githubusercontent.com/76874974/188722982-54d36341-f8dd-495e-8f40-f6738dbf47bf.png)
+
+
+
+** 8 контроль онлайн и подписи чанков **
+
+В общем то все. 
+
+Остается только контроллировать работу ноды. У меня не хватило времени , чтобы набрать нормальный онлайн. Так как после каждого перезапуска все пиры обнуляются. И половину эпохи нода не подписывает блоки.. У меня просто не хватило токенов AKT на онлайн ноды.  Но набрал 22%, что уже достойный результат. Думаю, в следующую эпоху вытянула бы больше 60% точно. Работала нода устойчиво, без глюков и непонятных перезагрузок сервиса.
+
+![near ch17 16 val-primary key status 1](https://user-images.githubusercontent.com/76874974/188724320-60ed3602-14bc-4b21-b6ca-d6d9bfd3d8f3.png)
+![near ch17 16 val-primary key status 2](https://user-images.githubusercontent.com/76874974/188724325-4167239d-669d-42e9-9ceb-2669cc3a0e7d.png)
+![near ch17 16 val-primary key status 3](https://user-images.githubusercontent.com/76874974/188724327-3e7b1f78-52cc-41cd-961e-af1ad197600a.png)
+![near ch17 16 val-primary key status 4](https://user-images.githubusercontent.com/76874974/188724330-70597d82-1c03-4669-a824-73a786018ca9.png)
+![near ch17 16 val-primary key status 5](https://user-images.githubusercontent.com/76874974/188724335-6058bbe6-8ecd-4f3b-9ec8-fe57728d5f8b.png)
+![near ch17 16 val-primary key status 6](https://user-images.githubusercontent.com/76874974/188724341-ca6d7287-c0d8-40ca-9295-27f273a3dabf.png)
+![near ch17 16 val-primary key status 7](https://user-images.githubusercontent.com/76874974/188724345-ba421d8f-bb1c-4180-879a-de10f6563eac.png)
+![near ch17 16 val-primary key status 8](https://user-images.githubusercontent.com/76874974/188724349-9e47f1a6-3092-4035-b902-3e5b5a25c6cb.png)
+
+
+
+
+
+
+И  завершительный скрин. Непосредственно конец эпохи. Перед остановкой ноды на akash
+
+![near ch17 17 val-primary key status 3](https://user-images.githubusercontent.com/76874974/188724632-dcfcfb99-5d48-4c81-a6b3-b8a1635a42ae.png)
+![near ch17 17 val-primary key status 4](https://user-images.githubusercontent.com/76874974/188724636-fde90930-6d87-4036-8ef1-cc446c7106e0.png)
+![near ch17 17 val-primary key status 5](https://user-images.githubusercontent.com/76874974/188724639-0a099e4a-abf7-4a25-8044-0cc18feb556f.png)
+![near ch17 17 val-primary key status 6](https://user-images.githubusercontent.com/76874974/188724645-9055cefd-53ff-4ed2-a16b-4b5059871f27.png)
+![near ch17 17 val-primary key status 7](https://user-images.githubusercontent.com/76874974/188724649-8cc213dd-020f-47e0-be67-35830b1b9402.png)
+![near ch17 17 val-primary key status 8](https://user-images.githubusercontent.com/76874974/188724654-67979a72-5ae9-4a10-953a-6583ef4ffef8.png)
+![near ch17 17 val-primary key status 9](https://user-images.githubusercontent.com/76874974/188724658-dcefb46b-87d2-4adb-95f2-f42dc32a0cfe.png)
+
 
 
 
