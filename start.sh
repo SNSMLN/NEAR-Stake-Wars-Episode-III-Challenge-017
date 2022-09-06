@@ -13,7 +13,7 @@ runsvdir -P /etc/service &
 nodepid=0
 ##
 apt update && apt upgrade -y
-apt install sudo nano mc -y
+apt install sudo nano cron mc -y
 ##
 t=1
 while [[ "$t" -eq 1 ]]
